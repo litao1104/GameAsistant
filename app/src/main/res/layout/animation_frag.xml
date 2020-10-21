@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/animation_image"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:src="@drawable/pic_san1"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/reminder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="请通过点击进行控制下面的功能。"
+        android:textSize="16sp"/>
+
+</LinearLayout>
