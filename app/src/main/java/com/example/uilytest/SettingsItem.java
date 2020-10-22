@@ -2,7 +2,12 @@ package com.example.uilytest;
 
 import android.content.Context;
 
-public class SettingsItem {
+import java.io.Serializable;
+
+public class SettingsItem implements Serializable {
+
+    public static final int TYPE_DISABLED = 0;
+    public static final int TYPE_ENABLED = 1;
 
     private int imageId;
 
@@ -10,14 +15,14 @@ public class SettingsItem {
 
     private String status;
 
-    private boolean enabled;
+    private int enabled;
 
-    public SettingsItem(Context context, int imageId, String name, boolean enabled) {
+    public SettingsItem(Context context, int imageId, String name, int enabled) {
         this.imageId = imageId;
         this.name = name;
         this.enabled = enabled;
 
-        if (enabled)
+        if (enabled == TYPE_ENABLED)
             setStatus(context.getString(R.string.status_enabled));
         else
             setStatus(context.getString(R.string.status_disabled));
@@ -47,16 +52,16 @@ public class SettingsItem {
         return status;
     }
 
-    public void setEnabled(Context context, boolean enabled) {
+    public void setEnabled(Context context, int enabled) {
         this.enabled = enabled;
 
-        if (enabled)
+        if (enabled == TYPE_ENABLED)
             setStatus(context.getString(R.string.status_enabled));
         else
             setStatus(context.getString(R.string.status_disabled));
     }
 
-    public boolean isEnabled() {
+    public int isEnabled() {
         return enabled;
     }
 }
