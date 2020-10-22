@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">UILyTest</string>
+    <string name="app_name">游戏助手</string>
+    <string name="settings_item1">内存清理</string>
+    <string name="settings_item2">网速保护</string>
+    <string name="settings_item3">防误触</string>
+    <string name="status_enabled">打开</string>
+    <string name="status_disabled">关闭</string>
+    <string name="animation_hint">请通过点击进行控制下面的功能。</string>
 </resources>

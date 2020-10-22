@@ -32,13 +32,16 @@ public class SettingsFragment extends Fragment {
     }
 
     private void initItems() {
-        SettingsItem neicunqingli = new SettingsItem(R.drawable.function_neicun, "内存清理", "关闭");
+        SettingsItem neicunqingli = new SettingsItem(R.drawable.function_neicun,
+                getString(R.string.settings_item1), getString(R.string.status_disabled));
         itemList.add(neicunqingli);
 
-        SettingsItem wangsubaohu = new SettingsItem(R.drawable.function_network, "网速保护", "关闭");
+        SettingsItem wangsubaohu = new SettingsItem(R.drawable.function_network,
+                getString(R.string.settings_item2), getString(R.string.status_disabled));
         itemList.add(wangsubaohu);
 
-        SettingsItem fangwuchu = new SettingsItem(R.drawable.function_fangwuchu, "防误触", "关闭");
+        SettingsItem fangwuchu = new SettingsItem(R.drawable.function_fangwuchu,
+                getString(R.string.settings_item3), getString(R.string.status_disabled));
         itemList.add(fangwuchu);
     }
 }

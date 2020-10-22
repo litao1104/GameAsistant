@@ -6,11 +6,10 @@
 
     <ImageView
         android:id="@+id/animation_image"
-        android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:src="@drawable/pic_san1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:paddingTop="10dp"
+        android:layout_marginTop="16dp"
         />
 
     <TextView
@@ -18,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="请通过点击进行控制下面的功能。"
+        android:text="@string/animation_hint"
         android:textSize="16sp"/>
 
 </LinearLayout>

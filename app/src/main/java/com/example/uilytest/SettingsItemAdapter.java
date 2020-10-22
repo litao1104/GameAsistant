@@ -12,18 +12,18 @@ import android.widget.TextView;
 import java.util.List;
 
 public class SettingsItemAdapter extends ArrayAdapter<SettingsItem> {
-    private int layoutResId1;
+    private int layoutResId;
 
     public SettingsItemAdapter(Context context, int layoutResId, List<SettingsItem> objects) {
         super(context, layoutResId, objects);
-        layoutResId1 = layoutResId;
+        this.layoutResId = layoutResId;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         SettingsItem settingsItem = getItem(position);
 
-        View view = LayoutInflater.from(getContext()).inflate(layoutResId1, parent, false);
+        View view = LayoutInflater.from(getContext()).inflate(layoutResId, parent, false);
         ImageView imageView = (ImageView) view.findViewById(R.id.item_image);
         TextView functionView = (TextView) view.findViewById(R.id.function_name);
         TextView statusView = (TextView) view.findViewById(R.id.status);
