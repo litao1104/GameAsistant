@@ -1,5 +1,7 @@
 package com.example.uilytest;
 
+import android.content.Context;
+
 public class SettingsItem {
 
     private int imageId;
@@ -8,10 +10,17 @@ public class SettingsItem {
 
     private String status;
 
-    public SettingsItem(int imageId, String name, String status) {
+    private boolean enabled;
+
+    public SettingsItem(Context context, int imageId, String name, boolean enabled) {
         this.imageId = imageId;
         this.name = name;
-        this.status = status;
+        this.enabled = enabled;
+
+        if (enabled)
+            setStatus(context.getString(R.string.status_enabled));
+        else
+            setStatus(context.getString(R.string.status_disabled));
     }
 
     public void setImageId(int imageId) {
@@ -30,11 +39,24 @@ public class SettingsItem {
         return name;
     }
 
-    public void setStatus(String status) {
+    private void setStatus(String status) {
         this.status = status;
     }
 
     public String getStatus() {
         return status;
+    }
+
+    public void setEnabled(Context context, boolean enabled) {
+        this.enabled = enabled;
+
+        if (enabled)
+            setStatus(context.getString(R.string.status_enabled));
+        else
+            setStatus(context.getString(R.string.status_disabled));
+    }
+
+    public boolean isEnabled() {
+        return enabled;
     }
 }
