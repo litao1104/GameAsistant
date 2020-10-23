@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,29 +19,32 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        TextView neiCunQingLiText = (TextView) findViewById(R.id.neicunqingli_text);
-        TextView wangSuBaoHuText = (TextView) findViewById(R.id.wangsubaohu_text);
-        TextView fangWuChuText = (TextView) findViewById(R.id.fangwuchu_text);
-
         Intent intent = getIntent();
         List<SettingsItem> itemList = (List<SettingsItem>)intent.getSerializableExtra("listdata");
 
-        for (int index = 0; index < itemList.size(); index++) {
-            SettingsItem settingsItem = (SettingsItem)itemList.get(index);
+        Log.d("litao", "list size is " + itemList.size());
 
-            if (settingsItem.getName().equals(getString(R.string.settings_item1))) {
-                   if (settingsItem.isEnabled() == SettingsItem.TYPE_DISABLED) {
-                    neiCunQingLiText.setVisibility(View.INVISIBLE);
-                }
-            } else if (settingsItem.getName().equals(getString(R.string.settings_item2))) {
-                if (settingsItem.isEnabled() == SettingsItem.TYPE_DISABLED) {
-                    wangSuBaoHuText.setVisibility(View.INVISIBLE);
-                }
-            } else if (settingsItem.getName().equals(getString(R.string.settings_item3))) {
-                if (settingsItem.isEnabled() == SettingsItem.TYPE_DISABLED) {
-                    fangWuChuText.setVisibility(View.INVISIBLE);
-                }
+        for (SettingsItem settingsItem : itemList) {
+            if (settingsItem.isEnabled() == SettingsItem.TYPE_DISABLED) {
+                itemList.remove(settingsItem);
             }
         }
+
+        //for (int index = 0; index < itemList.size(); index++) {
+        //    Log.d("litao1", "item.Name is " + itemList.get(index).getName());
+        //    Log.d("litao2", "item.isEnabled is " + itemList.get(index).isEnabled());
+        //    Log.d("litao3", "item.Status is " + itemList.get(index).getStatus());
+        //    if (itemList.get(index).isEnabled() == SettingsItem.TYPE_DISABLED) {
+        //        Log.d("litao", "index = " + index);
+        //        itemList.remove(index);
+        //        index--;
+        //    }
+        //}
+
+        Log.d("litao5", "list size is " + itemList.size());
+
+        StatusItemAdapter adapter = new StatusItemAdapter(SecondActivity.this, R.layout.status_item, itemList);
+        ListView listView = (ListView) findViewById(R.id.status_list_view);
+        listView.setAdapter(adapter);
     }
 }
