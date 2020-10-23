@@ -2,6 +2,7 @@ package com.example.uilytest;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,7 @@ public class SettingsFragment extends Fragment{
         initItems();
 
         SettingsItemAdapter adapter = new SettingsItemAdapter(getActivity(), R.layout.settings_item, itemList);
-        ListView listView = (ListView) view.findViewById(R.id.item_list_view);
+        ListView listView = (ListView) view.findViewById(R.id.list_view);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
