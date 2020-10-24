@@ -1,8 +1,9 @@
 package com.example.uilytest;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,11 @@ import java.util.List;
 
 public class SettingsFragment extends Fragment{
 
+    private static final long VIBRATE_DELAY_TIME = 10;
+
     private List<SettingsItem> itemList = new ArrayList<>();
+
+    private Vibrator vibrator;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,9 +37,13 @@ public class SettingsFragment extends Fragment{
         ListView listView = (ListView) view.findViewById(R.id.list_view);
         listView.setAdapter(adapter);
 
+        vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                vibrator.vibrate(VIBRATE_DELAY_TIME);
+
                 SettingsItem settingsItem = itemList.get(position);
                 if (settingsItem.isEnabled() == SettingsItem.TYPE_DISABLED)
                     settingsItem.setEnabled(getContext(), SettingsItem.TYPE_ENABLED);
@@ -50,6 +59,8 @@ public class SettingsFragment extends Fragment{
         check_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vibrator.vibrate(VIBRATE_DELAY_TIME);
+
                 Intent intent = new Intent(getActivity(), SecondActivity.class);
                 intent.putExtra("listdata", (Serializable)itemList);
                 startActivity(intent);

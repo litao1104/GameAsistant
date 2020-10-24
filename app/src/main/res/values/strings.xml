@@ -6,4 +6,5 @@
     <string name="status_enabled">打开</string>
     <string name="status_disabled">关闭</string>
     <string name="animation_hint">请通过点击进行控制下面的功能。</string>
+    <string name="settings_frag_button">查看</string>
 </resources>
